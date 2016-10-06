@@ -9,7 +9,6 @@ from api.api.views.snippets import SnippetView
 urlpatterns = [
     url(r'^api/v1/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/signup/$', SignUpView.as_view(), name='signup'),
-
     url(r'^api/v1/snippets/$', SnippetView.as_view(), name='snippets'),
 ]
 

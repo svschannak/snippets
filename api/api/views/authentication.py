@@ -18,7 +18,6 @@ class LoginView(APIView):
 
     def post(self, request, format=None):
         user = authenticate(username=request.data['username'], password=request.data['password'])
-
         if user:
             new_token = binascii.b2a_hex(os.urandom(30))
             user.settings.token = new_token
@@ -42,7 +41,7 @@ class SignUpView(APIView):
 
     def post(self, request, format=None):
         try:
-            user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+            user = User.objects.create_user(request.data['username'], request.data['email'], request.data['password'])
 
             settings = Settings.objects.create(user=user)
 
